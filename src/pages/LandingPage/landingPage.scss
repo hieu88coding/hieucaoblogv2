@@ -1,0 +1,77 @@
+.landing-container {
+  width: 100vw;
+  height: auto;
+  .landing-body {
+    width: 90%;
+    margin: 0 auto;
+    .landing-content {
+      width: 90%;
+      margin: 0 auto;
+      .landing-title {
+        margin-top: 200px;
+        width: 60%;
+        margin-bottom: 50px;
+        padding: 30px;
+        .landing-intro {
+          margin-bottom: 20px;
+          font-size: 45px;
+          font-weight: bolder;
+        }
+        .landing-short {
+          color: #62626a;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        .landing-social {
+          font-size: 25px;
+          width: 20%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+      .landing-post {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 200px;
+        .post-item {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          transition: transform 1s;
+          padding: 30px;
+          &:hover {
+            border-radius: 24px;
+          }
+          .post-date {
+            color: #57575e;
+            margin-bottom: 20px;
+            text-align: start;
+          }
+          .post-title {
+            font-weight: 500;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: start;
+          }
+          .post-short-des {
+            color: #62626a;
+            margin-bottom: 20px;
+            text-align: start;
+          }
+          .read-btn {
+            color: #1ebbaa;
+            font-weight: 500;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            .read-arrow {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

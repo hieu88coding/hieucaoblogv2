@@ -1,0 +1,14 @@
+.about-container {
+  width: 100vw;
+  height: auto;
+  .about-body {
+    width: 100%;
+    margin: 0 auto;
+    .about-content {
+      width: 100%;
+      //margin: 0 auto;
+      margin-top: 50vh;
+      margin-bottom: 100vh;
+    }
+  }
+}
