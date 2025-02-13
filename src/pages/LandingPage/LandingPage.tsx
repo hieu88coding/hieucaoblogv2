@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./landingPage.scss";
 import Header from "../../components/Header/Header";
 import {
@@ -6,16 +6,37 @@ import {
   GithubFilled,
   LinkedinFilled,
   RightOutlined,
+  HeartFilled,
+  HeartOutlined,
+  CommentOutlined,
+  SendOutlined,
 } from "@ant-design/icons";
 import Footer from "../../components/footer/Footer";
-import { Divider } from "antd";
-type Props = {
-  mode: "light" | "dark";
-};
+import { Card, Divider } from "antd";
+import useTheme from "../../hooks/useTheme";
 
-const LandingPage = ({ mode }: Props) => {
-  const [isHovered, setIsHovered] = useState(false);
+const LandingPage = () => {
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [heart, setHeart] = useState<boolean>(false);
+  const { mode } = useTheme();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); // Đổi ảnh sau 3 giây
 
+    return () => clearInterval(interval);
+  }, []);
+
+  const images = [
+    "/_MG_1824.JPG",
+    "/landing-ava.jpg",
+    "/DSC04251.jpg",
+    "/PMT_3615.jpg",
+  ];
+  const changeColor = () => {
+    setHeart(!heart);
+  };
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -35,28 +56,80 @@ const LandingPage = ({ mode }: Props) => {
       >
         <div className="landing-content">
           <Header />
-          <div className="landing-title">
-            <div className="landing-intro">
-              Software Engineer, Educator, Lifelong learner
+          <div className="landing-top">
+            <div className="landing-title">
+              <div className="landing-intro">
+                Software Engineer, Meme enjoyer, Lifelong learner
+              </div>
+              <div className="landing-short">
+                I’m Hieucao, a Software Engineer based in Hanoi, Vietnam. In
+                this blog, I plan to document my learnings and share my
+                knowledge with the software engineering world.
+              </div>
+              <div className="landing-social">
+                <div>
+                  <FacebookFilled />
+                </div>
+                <div>
+                  <GithubFilled />
+                </div>
+                <div>
+                  <LinkedinFilled />
+                </div>
+              </div>
             </div>
-            <div className="landing-short">
-              I’m Sai, a Software Engineer based in Rotterdam, Netherlands, I am
-              orginally from Hyderabad, India. In this blog, I plan to document
-              my learnigns and share my knowledge with the software engineering
-              world.
-            </div>
-            <div className="landing-social">
-              <div>
-                <FacebookFilled />
-              </div>
-              <div>
-                <GithubFilled />
-              </div>
-              <div>
-                <LinkedinFilled />
-              </div>
+            <div className="landing-image">
+              <Card>
+                <div className="insta-header">
+                  <div
+                    style={{
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: "50%",
+                      padding: "4px",
+                      background:
+                        "linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      overflow: "hidden", // Cắt bỏ phần dư
+                    }}
+                  >
+                    <img
+                      src="/catto.jpg"
+                      alt="avatar"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  </div>
+                  <div>not.hieucao</div>
+                </div>
+                <img src={images[currentIndex]} />
+                <div className="insta-footer">
+                  <div className="insta-icon">
+                    {heart ? (
+                      <HeartFilled
+                        onClick={() => changeColor()}
+                        style={{ color: "red" }}
+                      />
+                    ) : (
+                      <HeartOutlined onClick={() => changeColor()} />
+                    )}
+
+                    <CommentOutlined />
+                    <SendOutlined />
+                  </div>
+                  <div style={{ marginTop: 10 }}>{heart ? 69 : 68} Likes</div>
+                </div>
+              </Card>
             </div>
           </div>
+
           <div className="landing-post">
             <div
               className="post-item"

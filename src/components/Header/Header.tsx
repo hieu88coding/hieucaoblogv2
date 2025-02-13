@@ -1,13 +1,9 @@
 import "./header.scss";
 import { SunOutlined, MoonOutlined } from "@ant-design/icons";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../redux/store";
-import { toggleMode } from "../../redux/themeSlice";
-type Props = {};
+import useTheme from "../../hooks/useTheme";
 
-const Header = (props: Props) => {
-  const dispatch = useDispatch();
-  const mode = useSelector((state: RootState) => state.theme.mode);
+const Header = () => {
+  const { mode, toggleTheme } = useTheme();
   return (
     <div
       style={{
@@ -55,7 +51,7 @@ const Header = (props: Props) => {
                   ? ""
                   : "2px 2px 4px 0px rgba(255, 255, 255, 0.5)",
             }}
-            onClick={() => dispatch(toggleMode())}
+            onClick={() => toggleTheme()}
             className="toggle-btn"
           >
             {mode !== "light" ? <SunOutlined /> : <MoonOutlined />}

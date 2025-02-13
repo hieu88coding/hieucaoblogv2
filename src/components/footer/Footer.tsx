@@ -1,9 +1,7 @@
-type Props = {};
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import "./footer.scss";
-const Footer = (props: Props) => {
-  const mode = useSelector((state: RootState) => state.theme.mode);
+import useTheme from "../../hooks/useTheme";
+const Footer = () => {
+  const { mode } = useTheme();
 
   return (
     <div>

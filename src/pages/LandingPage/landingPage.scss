@@ -1,71 +1,108 @@
+@import "../../common/mixin.scss";
+
 .landing-container {
   width: 100vw;
   height: auto;
   .landing-body {
-    width: 90%;
-    margin: 0 auto;
+    @include container;
     .landing-content {
-      width: 90%;
-      margin: 0 auto;
-      .landing-title {
-        margin-top: 200px;
-        width: 60%;
-        margin-bottom: 50px;
-        padding: 30px;
-        .landing-intro {
-          margin-bottom: 20px;
-          font-size: 45px;
-          font-weight: bolder;
+      @include container(90%);
+      .landing-top {
+        margin: 100px auto 50px;
+        @include flex(row, space-between);
+        .landing-title {
+          width: 50%;
+          padding: 30px;
+          .landing-intro {
+            margin-bottom: 20px;
+            font-size: 45px;
+            font-weight: bolder;
+          }
+          .landing-short {
+            color: #62626a;
+            font-weight: 500;
+            margin-bottom: 20px;
+          }
+          .landing-social {
+            font-size: 25px;
+            width: 20%;
+            @include flex(row, space-between);
+          }
         }
-        .landing-short {
-          color: #62626a;
-          font-weight: 500;
-          margin-bottom: 20px;
-        }
-        .landing-social {
-          font-size: 25px;
-          width: 20%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
+        .landing-image {
+          width: 30%;
+          margin-right: 30px;
+          font-weight: bold;
+          transform: rotate(15deg);
+
+          .insta-header,
+          .insta-footer {
+            background: white;
+            color: black;
+            gap: 10px;
+            @include flex(row);
+            @include section-padding;
+          }
+
+          .insta-footer {
+            flex-direction: column;
+
+            .insta-icon {
+              @include flex(row);
+              gap: 10px;
+              font-size: large;
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+          }
         }
       }
+
       .landing-post {
-        display: flex;
-        flex-direction: column;
+        @include flex(column);
         margin-bottom: 200px;
+
         .post-item {
-          display: flex;
-          flex-direction: column;
+          @include flex(column);
           width: 50%;
           transition: transform 1s;
           padding: 30px;
+
           &:hover {
             border-radius: 24px;
           }
-          .post-date {
-            color: #57575e;
+
+          .post-date,
+          .post-title,
+          .post-short-des {
             margin-bottom: 20px;
             text-align: start;
           }
+
+          .post-date {
+            color: #57575e;
+          }
+
           .post-title {
             font-weight: 500;
             font-size: 20px;
-            margin-bottom: 20px;
-            text-align: start;
           }
+
           .post-short-des {
             color: #62626a;
-            margin-bottom: 20px;
-            text-align: start;
           }
+
           .read-btn {
             color: #1ebbaa;
             font-weight: 500;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
+            @include flex(row, flex-start, center);
             gap: 10px;
+
             .read-arrow {
               font-size: 13px;
             }
